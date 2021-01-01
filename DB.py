@@ -1,13 +1,13 @@
-import threading 
-import time
+import threading #library to construct high level threading interfaces
+import time #used to handle time based functions/applications
 from threading import*
 
-dictionary = {} 
+dictionary = {} # maps unique key-value pairs 
 
 
-def create(key,value,runtime=0):
+def create(key,value,runtime=0): # performs create operation in the database
     if key in dictionary:
-        print("ERROR: Key already present") 
+        print("ERROR: Key already present") # checks for duplicate keys
     else:
         if(key.isalpha()):
             if len(dictionary)<(1024*1020*1024) and value<=(16*1024*1024): 
@@ -24,7 +24,7 @@ def create(key,value,runtime=0):
 
 
             
-def read(key):
+def read(key): # performs read operation in the database
     if key not in dictionary:
         print("ERROR: Enter a valid key, the given key does not exist in DB") 
     else:
@@ -41,7 +41,7 @@ def read(key):
 
 
 
-def delete(key):
+def delete(key): # performs delete operation in the database
     if key not in dictionary:
         print("ERROR: Enter a valid key, the given key does not exist in DB") 
     else:
@@ -58,7 +58,7 @@ def delete(key):
 
 
 
-def modify(key,value):
+def modify(key,value): # performs modify operation in the database
     x=dictionary[key]
     if x[1]!=0:
         if time.time()<x[1]:
